@@ -7,8 +7,11 @@ import com.example.userservice.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @RestController
@@ -18,9 +21,9 @@ public class UserController {
 
     private final UserService userService;
 
-<span class="nc" id="L21">    public UserController(UserService userService) {</span>
-<span class="nc" id="L22">        this.userService = userService;</span>
-<span class="nc" id="L23">    }</span>
+<span class="fc" id="L24">    public UserController(UserService userService) {</span>
+<span class="fc" id="L25">        this.userService = userService;</span>
+<span class="fc" id="L26">    }</span>
 
     /**
      * Endpoint para registrar un usuario
@@ -30,8 +33,8 @@ public class UserController {
      */
     @PostMapping(&quot;/sign-up&quot;)
     public ResponseEntity&lt;UserResponse&gt; signUp(@Valid @RequestBody UserDTO userDTO) {
-<span class="nc" id="L33">        UserResponse createdUser = userService.createUser(userDTO);</span>
-<span class="nc" id="L34">        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);</span>
+<span class="fc" id="L36">        UserResponse createdUser = userService.createUser(userDTO);</span>
+<span class="fc" id="L37">        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);</span>
     }
 
     /**
@@ -40,8 +43,8 @@ public class UserController {
     @PostMapping(&quot;/login&quot;)
     public ResponseEntity&lt;LoginResponse&gt; login(@RequestHeader(&quot;Authorization&quot;) String authorizationHeader) {
         // Validar el token y actualizar el usuario
-<span class="nc" id="L43">        LoginResponse loginResponse = userService.validateTokenAndUpdate(authorizationHeader);</span>
-<span class="nc" id="L44">        return ResponseEntity.ok(loginResponse);</span>
+<span class="fc" id="L46">        LoginResponse loginResponse = userService.validateTokenAndUpdate(authorizationHeader);</span>
+<span class="fc" id="L47">        return ResponseEntity.ok(loginResponse);</span>
     }
 
 }

@@ -89,7 +89,7 @@ public class UserService {
 
             // Buscar usuario por correo electrÃ³nico
 <span class="fc" id="L91">            User user = userRepository.findByEmail(userEmail)</span>
-<span class="pc" id="L92">                    .orElseThrow(() -&gt; new IllegalArgumentException(&quot;El token proporcionado no estÃ¡ asociado a un usuario vÃ¡lido&quot;));</span>
+<span class="fc" id="L92">                    .orElseThrow(() -&gt; new IllegalArgumentException(&quot;El token proporcionado no estÃ¡ asociado a un usuario vÃ¡lido&quot;));</span>
 
             // Actualizar informaciÃ³n de Ãºltimo ingreso y generar nuevo token
 <span class="fc" id="L95">            user.setLastLogin(LocalDateTime.now());</span>

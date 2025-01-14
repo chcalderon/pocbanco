@@ -9,6 +9,8 @@ import com.example.userservice.model.Phone;
 import com.example.userservice.repository.UserRepository;
 import com.example.userservice.util.JwtUtil;
 
+import io.jsonwebtoken.ExpiredJwtException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -138,6 +140,39 @@ class UserServiceTest {
         String token = "Bearer invalid_token";
 
         when(jwtUtil.extractUsername("invalid_token")).thenThrow(new IllegalArgumentException("Token no válido"));
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> userService.validateTokenAndUpdate(token));
+        verify(userRepository, never()).save(any(User.class));
+    }
+
+    // @Test
+    // public void createUser_shouldThrowExceptionForInvalidEmail() {
+    //     // Arrange
+    //     UserDTO userDTO = new UserDTO();
+    //     userDTO.setName("John Doe");
+    //     userDTO.setEmail("invalid_email"); // Missing "@" symbol
+    //     userDTO.setPassword("a2asfGfdfdf4");
+    //     PhoneDTO phoneDTO = new PhoneDTO();
+    //     phoneDTO.setNumber(123456789);
+    //     phoneDTO.setCitycode(1);
+    //     phoneDTO.setCountrycode("57");
+    //     userDTO.setPhones(List.of(phoneDTO));
+
+    //     // Mock userRepository behavior for invalid email
+    //     when(userRepository.findByEmail(userDTO.getEmail())).thenReturn(Optional.empty());
+
+    //     // Act & Assert
+    //     assertThrows(IllegalArgumentException.class, () -> userService.createUser(userDTO));
+    //     verify(userRepository, never()).save(any(User.class));
+    // }
+
+    @Test
+    public void validateTokenAndUpdate_shouldThrowExceptionForExpiredToken() {
+        // Arrange
+        String token = "Bearer expired_token";
+
+        when(jwtUtil.extractUsername(token)).thenThrow(new ExpiredJwtException(null, null, "Token has expired"));
 
         // Act & Assert
         assertThrows(IllegalArgumentException.class, () -> userService.validateTokenAndUpdate(token));
