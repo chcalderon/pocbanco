@@ -6,7 +6,7 @@ plugins {
 }
 
 jacoco {
-    toolVersion = "0.8.10" // Asegúrate de usar la última versión compatible
+    toolVersion = "0.8.10" // Asegurar de usar la última versión compatible
 }
 
 group = 'com.example'
@@ -48,7 +48,7 @@ jacocoTestReport {
     reports {
         xml.required.set(true) // Para integración con herramientas como SonarQube
         csv.required.set(false)
-        html.required.set(true)
+        html.required.set(true) // Generar html para reporte
         html.outputLocation.set(layout.buildDirectory.dir('jacocoHtml')) // Genera el informe HTML
     }
     def mainClassFiles = fileTree(
