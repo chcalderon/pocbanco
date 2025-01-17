@@ -70,7 +70,7 @@ tasks.jacocoTestCoverageVerification {
 }
 
 tasks.withType(Test).configureEach {
-    finalizedBy jacocoTestReport // Report is always generated after tests run
+    finalizedBy jacocoTestReport // Siempre generara el Report despues de que los test corran
 }
 
 check.dependsOn jacocoTestCoverageVerification
