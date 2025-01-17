@@ -41,7 +41,7 @@ build/jacocoHtml/index.html
 o
 gradle check
 
-#Ejemplo de ejecucion
+# Ejemplo de ejecucion
 
 1. Registro de Usuario - POST /sign-up
 
