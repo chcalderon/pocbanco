@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -40,7 +41,7 @@ public class UserController {
     /**
      * Endpoint para consultar al usuario autenticado mediante un token JWT.
      */
-    @PostMapping("/login")
+    @GetMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestHeader("Authorization") String authorizationHeader) {
         // Validar el token y actualizar el usuario
         LoginResponse loginResponse = userService.validateTokenAndUpdate(authorizationHeader);
