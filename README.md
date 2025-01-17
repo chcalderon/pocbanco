@@ -45,45 +45,31 @@ gradle check
 
 1. Registro de Usuario - POST /sign-up
 
-curl -X POST http://localhost:8080/users/sign-up \
+curl -X POST http://localhost:8080/api/users/sign-up \
 -H "Content-Type: application/json" \
 -d '{
-  "name": "Julio Gonzalez",
-  "email": "julio@testssw.cl",
-  "password": "a2asfGfdfdf4",
-  "phones": [
-    {
-      "number": 87650009,
-      "citycode": 7,
-      "contrycode": "25"
-    }
-  ]
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "a2asffDdfdf4",
+    "phones": [
+        {"number": 123456789, "citycode": 1, "countrycode": "57"}
+    ]
 }'
 
 Respuesta esperada:
 
 201- created
 {
-  "id": "e5c6cf84-8860-4c00-91cd-22d3be28904e",
-  "created": "2025-01-13T12:00:00",
-  "lastLogin": "2025-01-13T12:00:00",
-  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWxpb0B0ZXN0...",
-  "isActive": true,
-  "name": "Julio Gonzalez",
-  "email": "julio@testssw.cl",
-  "password": "a2asfGfdfdf4",
-  "phones": [
-    {
-      "number": 87650009,
-      "citycode": 7,
-      "contrycode": "25"
-    }
-  ]
+    "id": "6f47a918-fca6-4a08-95ed-88d2e0d33705",
+    "created": "2025-01-17T17:53:35.9480042",
+    "lastLogin": "2025-01-17T17:53:35.9480042",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzM3MTQ3MjE1LCJleHAiOjE3MzcxNTA4MTV9.6nWLc2-rchGRHpjMvUZUvhhqrpHCsJugyxJCam8rg34",
+    "active": true
 }
 
 2. Login de Usuario - GET /login
 
-curl -X GET "http://localhost:8080/users/login" \
+curl -X GET "http://localhost:8080/api/users/login" \
 -H "Authorization: Bearer token" //reemplace token por el valor entregado en el paso 1
 
 respuesta esperada:
@@ -91,10 +77,10 @@ respuesta esperada:
 200-ok
 
 {
-    "id": "7ee1a461-22e1-4fe3-aa88-eeab8a68050c",
-    "created": "2025-01-17T15:07:01.971744",
-    "lastLogin": "2025-01-17T15:07:17.257561",
-    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzM3MTM3MjM3LCJleHAiOjE3MzcxNDA4Mzd9.4uoZA1LlMIWIAmfmUqGQPjHm1FN-IDM5DGqyCd_PKU8",
+    "id": "6f47a918-fca6-4a08-95ed-88d2e0d33705",
+    "created": "2025-01-17T17:53:35.948004",
+    "lastLogin": "2025-01-17T17:54:21.811622300",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwiaWF0IjoxNzM3MTQ3MjYxLCJleHAiOjE3MzcxNTA4NjF9.zhLmxPtE_sK3k4OgtYOi9_XXrr5jYX0rKlDfiGjgMX8",
     "name": "John Doe",
     "email": "johndoe@example.com",
     "password": "a2asffDdfdf4",
