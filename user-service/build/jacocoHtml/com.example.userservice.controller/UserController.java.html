@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -21,9 +22,9 @@ public class UserController {
 
     private final UserService userService;
 
-<span class="fc" id="L24">    public UserController(UserService userService) {</span>
-<span class="fc" id="L25">        this.userService = userService;</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L25">    public UserController(UserService userService) {</span>
+<span class="fc" id="L26">        this.userService = userService;</span>
+<span class="fc" id="L27">    }</span>
 
     /**
      * Endpoint para registrar un usuario
@@ -33,18 +34,18 @@ public class UserController {
      */
     @PostMapping(&quot;/sign-up&quot;)
     public ResponseEntity&lt;UserResponse&gt; signUp(@Valid @RequestBody UserDTO userDTO) {
-<span class="fc" id="L36">        UserResponse createdUser = userService.createUser(userDTO);</span>
-<span class="fc" id="L37">        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);</span>
+<span class="fc" id="L37">        UserResponse createdUser = userService.createUser(userDTO);</span>
+<span class="fc" id="L38">        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);</span>
     }
 
     /**
      * Endpoint para consultar al usuario autenticado mediante un token JWT.
      */
-    @PostMapping(&quot;/login&quot;)
+    @GetMapping(&quot;/login&quot;)
     public ResponseEntity&lt;LoginResponse&gt; login(@RequestHeader(&quot;Authorization&quot;) String authorizationHeader) {
         // Validar el token y actualizar el usuario
-<span class="fc" id="L46">        LoginResponse loginResponse = userService.validateTokenAndUpdate(authorizationHeader);</span>
-<span class="fc" id="L47">        return ResponseEntity.ok(loginResponse);</span>
+<span class="fc" id="L47">        LoginResponse loginResponse = userService.validateTokenAndUpdate(authorizationHeader);</span>
+<span class="fc" id="L48">        return ResponseEntity.ok(loginResponse);</span>
     }
 
 }

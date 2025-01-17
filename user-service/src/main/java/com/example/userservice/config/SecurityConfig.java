@@ -14,7 +14,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-            .antMatchers("/api/users/sign-up", "/api/users/login", "/h2-console/**").permitAll() // Permitimos sign-up, login y H2 console sin autenticación
+            .antMatchers("/api/users/sign-up",
+                    "/api/users/login",
+                    "/h2-console/**",
+                    "/",
+                    "/swagger-ui/**",    // Permitir acceso a Swagger-UI
+                    "/v3/api-docs/**",   // Permitir acceso a la especificación OpenAPI 3
+                    "/swagger-resources/**", // Requerido por Springfox si usas Swagger 2
+                    "/webjars/**"        // Recursos estáticos de Swagger-UI
+                    ).permitAll() // Permitimos sign-up, login y H2 console sin autenticación
             .anyRequest().authenticated() // Requiere autenticación para todos los demás endpoints
             .and()
             .headers()

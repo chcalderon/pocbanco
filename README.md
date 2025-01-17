@@ -107,3 +107,6 @@ respuesta esperada:
     ],
     "active": true
 }
+
+# Swagger para muestreo de endpoints
+http://localhost:8080/swagger-ui/index.html
