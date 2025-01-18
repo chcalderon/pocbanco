@@ -3,7 +3,6 @@ package com.example.userservice.service;
 import com.example.userservice.dto.UserDTO;
 import com.example.userservice.dto.PhoneDTO;
 import com.example.userservice.dto.UserResponse;
-import com.example.userservice.exception.UserNotFoundException;
 import com.example.userservice.dto.LoginResponse;
 import com.example.userservice.model.User;
 import com.example.userservice.model.Phone;
@@ -111,7 +110,7 @@ public class UserService {
                             .map(dto -> new PhoneDTO(dto.getNumber(), dto.getCitycode(), dto.getCountrycode()))
                             .collect(Collectors.toList())
             );
-        } catch (UserNotFoundException | IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
         throw e; // Estas excepciones ya tienen manejadores específicos.
         } catch (Exception e) {
             throw new RuntimeException("Ocurrió un error inesperado", e);

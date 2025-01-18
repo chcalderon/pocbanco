@@ -31,21 +31,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleUserNotFoundException(UserNotFoundException ex) {
-        // Crear el cuerpo del error específico para usuario no encontrado
-        Map<String, Object> error = Map.of(
-                "timestamp", LocalDateTime.now(),
-                "codigo", HttpStatus.NOT_FOUND.value(),
-                "detail", ex.getMessage()
-        );
-
-        // Crear el cuerpo de la respuesta
-        Map<String, Object> response = Map.of("error", List.of(error));
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
-    }
-
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Map<String, Object>> handleIllegalArgumentException(IllegalArgumentException ex) {
         // Crear el cuerpo del error específico para argumentos inválidos
