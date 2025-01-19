@@ -53,7 +53,7 @@ class UserServiceTest {
     private UserServiceImpl userService;
 
     @Mock
-    private Validator validator; // Validador de Spring
+    private Validator validator;
 
     private BCryptPasswordEncoder passwordEncoder;
 
