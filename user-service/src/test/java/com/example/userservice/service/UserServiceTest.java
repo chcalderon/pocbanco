@@ -87,7 +87,7 @@ class UserServiceTest {
         mockUser.setToken("mocked_token");
         mockUser.setActive(true);
         when(userRepository.save(any(User.class))).thenReturn(mockUser);
-        
+
         // Act
         UserResponse response = userService.createUser(userDTO);
 
