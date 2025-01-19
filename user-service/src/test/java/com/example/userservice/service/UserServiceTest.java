@@ -41,7 +41,7 @@ class UserServiceTest {
     private JwtUtil jwtUtil;
 
     @InjectMocks
-    private UserService userService;
+    private UserServiceImpl userService;
 
     private BCryptPasswordEncoder passwordEncoder;
 

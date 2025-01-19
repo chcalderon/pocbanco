@@ -46,7 +46,7 @@ class UserControllerTest {
         phoneDTO.setCountrycode("57");
         userDTO.setPhones(List.of(phoneDTO));
         UserResponse mockResponse = new UserResponse();
-        
+
         mockResponse.setId("12345");
         mockResponse.setToken("mocked_token");
 

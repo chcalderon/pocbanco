@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.userservice.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-17T18:43:26" hostname="DESKTOP-751RQ6I" time="0.905">
+<testsuite name="com.example.userservice.service.UserServiceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-01-19T14:35:46" hostname="DESKTOP-751RQ6I" time="1.929">
   <properties/>
-  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForInvalidToken()" classname="com.example.userservice.service.UserServiceTest" time="0.627"/>
-  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForExpiredToken()" classname="com.example.userservice.service.UserServiceTest" time="0.009"/>
-  <testcase name="createUser_shouldThrowExceptionIfUserAlreadyExists()" classname="com.example.userservice.service.UserServiceTest" time="0.007"/>
-  <testcase name="createUser_shouldCreateUserSuccessfully()" classname="com.example.userservice.service.UserServiceTest" time="0.248"/>
-  <testcase name="validateTokenAndUpdate_shouldReturnLoginResponse()" classname="com.example.userservice.service.UserServiceTest" time="0.009"/>
+  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForInvalidToken()" classname="com.example.userservice.service.UserServiceTest" time="1.763"/>
+  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForExpiredToken()" classname="com.example.userservice.service.UserServiceTest" time="0.004"/>
+  <testcase name="createUser_shouldThrowExceptionIfUserAlreadyExists()" classname="com.example.userservice.service.UserServiceTest" time="0.011"/>
+  <testcase name="createUser_shouldCreateUserSuccessfully()" classname="com.example.userservice.service.UserServiceTest" time="0.14"/>
+  <testcase name="validateTokenAndUpdate_shouldReturnLoginResponse()" classname="com.example.userservice.service.UserServiceTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
