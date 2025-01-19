@@ -18,13 +18,22 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
+import javax.validation.Validator;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -42,6 +51,9 @@ class UserServiceTest {
 
     @InjectMocks
     private UserServiceImpl userService;
+
+    @Mock
+    private Validator validator; // Validador de Spring
 
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -146,26 +158,37 @@ class UserServiceTest {
         verify(userRepository, never()).save(any(User.class));
     }
 
-    // @Test
-    // public void createUser_shouldThrowExceptionForInvalidEmail() {
-    //     // Arrange
-    //     UserDTO userDTO = new UserDTO();
-    //     userDTO.setName("John Doe");
-    //     userDTO.setEmail("invalid_email"); // Missing "@" symbol
-    //     userDTO.setPassword("a2asfGfdfdf4");
-    //     PhoneDTO phoneDTO = new PhoneDTO();
-    //     phoneDTO.setNumber(123456789);
-    //     phoneDTO.setCitycode(1);
-    //     phoneDTO.setCountrycode("57");
-    //     userDTO.setPhones(List.of(phoneDTO));
+    @Test
+    public void createUser_shouldThrowExceptionForInvalidEmail() {
+        // Arrange
+        UserDTO userDTO = new UserDTO();
+        userDTO.setName("John Doe");
+        userDTO.setEmail("invalid_email"); // Email inválido
+        userDTO.setPassword("a2asfGfdfdf4");
+        PhoneDTO phoneDTO = new PhoneDTO();
+        phoneDTO.setNumber(123456789);
+        phoneDTO.setCitycode(1);
+        phoneDTO.setCountrycode("57");
+        userDTO.setPhones(List.of(phoneDTO));
 
-    //     // Mock userRepository behavior for invalid email
-    //     when(userRepository.findByEmail(userDTO.getEmail())).thenReturn(Optional.empty());
+        // Configura Validator
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator javaxValidator = factory.getValidator();
 
-    //     // Act & Assert
-    //     assertThrows(IllegalArgumentException.class, () -> userService.createUser(userDTO));
-    //     verify(userRepository, never()).save(any(User.class));
-    // }
+        // Valida el DTO
+        Set<ConstraintViolation<UserDTO>> violations = javaxValidator.validate(userDTO);
+
+        // Act & Assert
+        assertFalse(violations.isEmpty(), "El DTO debería tener errores de validación");
+        assertThrows(IllegalArgumentException.class, () -> {
+            if (!violations.isEmpty()) {
+                throw new IllegalArgumentException(violations.iterator().next().getMessage());
+            }
+            userService.createUser(userDTO);
+        });
+
+        verify(userRepository, never()).save(any(User.class));
+    }
 
     @Test
     public void validateTokenAndUpdate_shouldThrowExceptionForExpiredToken() {
