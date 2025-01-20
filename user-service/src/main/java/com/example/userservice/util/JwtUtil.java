@@ -13,6 +13,8 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
+    // Para la prueba se autogenerará el Secret_Key, aunque la idea es que provenga de algun properties
+    // o un servicio de configuración
     private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     // Generar un token JWT
