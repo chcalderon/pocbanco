@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.userservice.service.UserServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-01-19T19:57:39" hostname="DESKTOP-751RQ6I" time="0.643">
+<testsuite name="com.example.userservice.service.UserServiceTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-01-20T00:01:14" hostname="DESKTOP-751RQ6I" time="0.68">
   <properties/>
-  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForInvalidToken()" classname="com.example.userservice.service.UserServiceTest" time="0.251"/>
-  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForExpiredToken()" classname="com.example.userservice.service.UserServiceTest" time="0.005"/>
-  <testcase name="createUser_shouldThrowExceptionIfUserAlreadyExists()" classname="com.example.userservice.service.UserServiceTest" time="0.003"/>
-  <testcase name="createUser_shouldCreateUserSuccessfully()" classname="com.example.userservice.service.UserServiceTest" time="0.151"/>
-  <testcase name="validateTokenAndUpdate_shouldReturnLoginResponse()" classname="com.example.userservice.service.UserServiceTest" time="0.004"/>
-  <testcase name="createUser_shouldThrowExceptionForInvalidEmail()" classname="com.example.userservice.service.UserServiceTest" time="0.224"/>
+  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForInvalidToken()" classname="com.example.userservice.service.UserServiceTest" time="0.245"/>
+  <testcase name="validateTokenAndUpdate_shouldThrowExceptionForExpiredToken()" classname="com.example.userservice.service.UserServiceTest" time="0.009"/>
+  <testcase name="createUser_shouldThrowExceptionIfUserAlreadyExists()" classname="com.example.userservice.service.UserServiceTest" time="0.004"/>
+  <testcase name="createUser_shouldCreateUserSuccessfully()" classname="com.example.userservice.service.UserServiceTest" time="0.185"/>
+  <testcase name="validateTokenAndUpdate_shouldReturnLoginResponse()" classname="com.example.userservice.service.UserServiceTest" time="0.006"/>
+  <testcase name="createUser_shouldThrowExceptionForInvalidEmail()" classname="com.example.userservice.service.UserServiceTest" time="0.226"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
